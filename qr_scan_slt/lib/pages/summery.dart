@@ -6,7 +6,7 @@ class Summery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Summery')),
+      appBar: AppBar(title: const Text('Summery'),backgroundColor: Colors.blue,),
       body: const Center(
         child: Text("Summery Page"),
       ),

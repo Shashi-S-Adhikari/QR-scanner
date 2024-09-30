@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_scan_slt/home_page.dart';
+import 'package:qr_scan_slt/pages/sign_in_screen.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -67,7 +69,7 @@ class SplashScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => Homepage()),
+                      MaterialPageRoute(builder: (context) => SignInScreen()),
                     );
                   },
                   child: CircleAvatar(

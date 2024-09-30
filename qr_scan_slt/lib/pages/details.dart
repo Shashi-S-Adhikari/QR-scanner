@@ -6,7 +6,7 @@ class Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Details')),
+      appBar: AppBar(title: const Text('Details'),backgroundColor: Colors.blue,),
       body: const Center(
         child: Text("Details Page"),
       ),
