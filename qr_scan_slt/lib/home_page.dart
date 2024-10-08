@@ -24,7 +24,7 @@ class _HomepageState extends State<Homepage> {
   //create list of pages
   final List<Widget> _pages = [
     //Details
-    const Details(),
+    const Details(qrCode: '',),
 
     // QR SCAN
     const QrScan(),

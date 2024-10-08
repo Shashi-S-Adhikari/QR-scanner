@@ -23,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.qr_scan_slt"
-        minSdkVersion = 23
+        minSdkVersion = 23  // Fixed property name
         targetSdk = 34  // Updated to SDK 34
         versionCode = 1
         versionName = "1.0"
