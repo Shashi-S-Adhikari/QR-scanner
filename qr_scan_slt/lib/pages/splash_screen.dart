@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_scan_slt/home_page.dart';
+//import 'package:qr_scan_slt/home_page.dart';
 import 'package:qr_scan_slt/pages/sign_in_screen.dart';
 
 
