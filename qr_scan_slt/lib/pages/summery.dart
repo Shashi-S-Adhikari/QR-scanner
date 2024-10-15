@@ -8,7 +8,7 @@ class Summery extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Summery'),
-        backgroundColor: Colors.grey[850], // Dark grey background for AppBar
+        backgroundColor: Colors.grey[900], // Dark grey background for AppBar
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -19,7 +19,7 @@ class Summery extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -33,7 +33,7 @@ class Summery extends StatelessWidget {
                     Navigator.pushNamed(context, '/history'); // Navigate to history page
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 45.0),
+                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                     decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(20),
@@ -47,10 +47,10 @@ class Summery extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 50),
+                const SizedBox(width: 16),
                 // Summery Tab
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 45.0),
+                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                   decoration: BoxDecoration(
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(20),
@@ -65,23 +65,23 @@ class Summery extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             const Text(
               'Ticket Count',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 25),
             // Card for "No Of Tickets"
-            buildTicketCard('No Of Tickets', '2'),
-            const SizedBox(height: 50),
+            buildTicketCard('No Of Tickets', '1000'),
+            const SizedBox(height: 30),
             // Card for "Normal Tickets"
-            buildTicketCard('Normal Tickets', ''),
-            const SizedBox(height: 50),
+            buildTicketCard('Normal Tickets', '500'),
+            const SizedBox(height: 30),
             // Card for "VIP Tickets"
-            buildTicketCard('VIP Tickets', '2'),
-            const SizedBox(height: 50),
+            buildTicketCard('VIP Tickets', '250'),
+            const SizedBox(height: 30),
             // Card for "VVIP Tickets"
-            buildTicketCard('VVIP Tickets', ''),
+            buildTicketCard('VVIP Tickets', '250'),
           ],
         ),
       ),
@@ -112,15 +112,15 @@ class Summery extends StatelessWidget {
             title,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 24,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Container(
-            width: 100,
-            height: 60,
+            width: 70,
+            height: 40,
             decoration: BoxDecoration(
-              color: Colors.grey[50],
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
@@ -128,7 +128,7 @@ class Summery extends StatelessWidget {
                 count,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),

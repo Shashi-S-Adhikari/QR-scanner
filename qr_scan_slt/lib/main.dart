@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scan_slt/dbHelper/mongodb.dart';
 import 'package:qr_scan_slt/pages/splash_screen.dart';
 //import 'package:qr_scan_slt/pages/sign_in_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
   runApp(const MyApp());
 }
 
