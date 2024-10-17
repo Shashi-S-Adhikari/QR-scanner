@@ -6,135 +6,98 @@ class Summery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Summery'),
-        backgroundColor: Colors.grey[900], // Dark grey background for AppBar
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // Handle menu button press
-            },
+      backgroundColor: Color(0xFF2D2D2D), // Background color for the page
+      body: Column(
+        children: [
+          // Title for Summery
+          Padding(
+            padding: const EdgeInsets.only(top: 32.0, bottom: 16.0),
+            child: Text(
+              'Summery',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          // Subtitle for Void Ticket Count
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Text(
+              'Void Ticket Count',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[400],
+              ),
+            ),
+          ),
+          // Dummy summery content (like in the image)
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              children: [
+                buildTicketCard('Total count', '1000'),
+                buildTicketCard('Normal Tickets', '500'),
+                buildTicketCard('VIP Tickets', '250'),
+                buildTicketCard('VVIP Tickets', '250'),
+              ],
+            ),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Tab switcher between History and Summery
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // History Tab
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/history'); // Navigate to history page
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Text(
-                      'History',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                // Summery Tab
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    'Summery',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-            const Text(
-              'Ticket Count',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 25),
-            // Card for "No Of Tickets"
-            buildTicketCard('No Of Tickets', '1000'),
-            const SizedBox(height: 30),
-            // Card for "Normal Tickets"
-            buildTicketCard('Normal Tickets', '500'),
-            const SizedBox(height: 30),
-            // Card for "VIP Tickets"
-            buildTicketCard('VIP Tickets', '250'),
-            const SizedBox(height: 30),
-            // Card for "VVIP Tickets"
-            buildTicketCard('VVIP Tickets', '250'),
-          ],
-        ),
-      ),
-      backgroundColor: Colors.grey[900], // Background color for the entire page
     );
   }
 
   // Method to create each ticket count card
   Widget buildTicketCard(String title, String count) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-      decoration: BoxDecoration(
-        color: Colors.grey[850],
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+        decoration: BoxDecoration(
+          color: Colors.blueAccent, // Blue background color for the card
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              spreadRadius: 2,
+              blurRadius: 7,
+              offset: const Offset(0, 3),
             ),
-          ),
-          Container(
-            width: 70,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            child: Center(
-              child: Text(
-                count,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+            Container(
+              width: 100,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.lightBlue, // Update this color to your desired color for inner boxes
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Text(
+                  count,
+                  style: const TextStyle(
+                    color: Colors.black, // Update text color if needed
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
