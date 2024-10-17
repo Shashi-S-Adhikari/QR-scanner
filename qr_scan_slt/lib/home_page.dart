@@ -15,16 +15,18 @@ class _HomePageState extends State<HomePage> {
 
   MobileScannerController cameraController = MobileScannerController();
 
-  List<Widget> _pages = []; // Pages will be initialized in initState
+  // List of pages to navigate between using the bottom navigation bar
+  List<Widget> _pages = [];
 
   @override
   void initState() {
     super.initState();
 
+    // Initialize the list of pages: History, QR Scanner, and Summary
     _pages = [
-      buildHistoryPage(), // History page
-      buildQrScanPage(),  // QR Scanner page
-      Summery(),          // Summery page loaded here
+      Details(qrCode: 'Sample QR Code'), // History page
+      buildQrScanPage(), // QR Scanner page
+      Summery(), // Summary page
     ];
   }
 
@@ -108,11 +110,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Function to build the History page
-  Widget buildHistoryPage() {
-    return Details(qrCode: 'Sample QR Code'); // Provide a sample QR code
-  }
-
   // Method to handle navigation bar item click
   void _onItemTapped(int index) {
     setState(() {
@@ -123,7 +120,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex], // Show the selected page
+      body: _pages[_selectedIndex], // Show the selected page based on the index
       bottomNavigationBar: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -152,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                     label: 'History',
                   ),
                   BottomNavigationBarItem(
-                    icon: SizedBox.shrink(),
+                    icon: SizedBox.shrink(), // Empty space for the floating button
                     label: '',
                   ),
                   BottomNavigationBarItem(
@@ -187,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                 child: Icon(Icons.qr_code_scanner, size: 30, color: Colors.white),
                 onPressed: () {
                   setState(() {
-                    _selectedIndex = 1;
+                    _selectedIndex = 1; // Navigate to QR Scanner when pressed
                   });
                 },
               ),
