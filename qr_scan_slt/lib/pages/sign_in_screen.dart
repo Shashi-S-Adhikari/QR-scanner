@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_scan_slt/home_page.dart';
+import 'package:qr_scan_slt/home_page.dart';  // Make sure this path is correct
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -8,209 +8,80 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Sign In",
-              style: TextStyle(
-                fontSize: 42,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(height: 100),
-            Text(
-              "please Provide the Following Information",
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 50),
-            // User Name field with updated color
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "User Name",
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9), // Updated color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
+        padding: const EdgeInsets.symmetric(horizontal: 24.0), // Uniform padding
+        child: Center(
+          child: SingleChildScrollView( // Allows scrolling if the keyboard opens
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Sign In Header
+                Text(
+                  "Sign In",
+                  style: TextStyle(
+                    fontSize: 42,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
                   ),
                 ),
-              ),
-            ),
-            SizedBox(height: 10),
-            // Password field with updated color
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9), // Updated color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
+                SizedBox(height: 20),
+                // Instruction Text
+                Text(
+                  "Please Provide the Following Information",
+                  style: TextStyle(fontSize: 20, color: Colors.black54),
+                  textAlign: TextAlign.center,
                 ),
-                obscureText: true,
-              ),
+                SizedBox(height: 40),
+                // User Name field
+                _buildTextField("User Name"),
+                SizedBox(height: 16),
+                // Password field
+                _buildTextField("Password", obscureText: true),
+                SizedBox(height: 16),
+                // Phone No field
+                _buildTextField("Phone No", keyboardType: TextInputType.phone),
+                SizedBox(height: 40),
+                // Elevated button for Verify action
+                _buildVerifyButton(context),
+              ],
             ),
-            SizedBox(height: 10),
-            // Phone No field with updated color
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "Phone No",
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9), // Updated color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-                keyboardType: TextInputType.phone,
-              ),
-            ),
-            SizedBox(height: 10),
-            // Dropdown field with updated color
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: "Select The Event",
-                  filled: true,
-                  fillColor: Color(0xFFD9D9D9), // Updated color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-                items: [
-                  DropdownMenuItem(
-                    child: Text("Deep Jungle Reggae Stage 2024"),
-                    value: "Event",
-                  ),
-                ],
-                onChanged: (value) {},
-              ),
-            ),
-            SizedBox(height: 20),
-            // Elevated button for Verify action
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Homepage()),
-                );
-              },
-              child: Text("Verify"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                minimumSize: Size(double.infinity, 50), // Adjusted button height
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Rounded button
-                ),
-              ),
-            ),
-          ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String labelText, {bool obscureText = false, TextInputType keyboardType = TextInputType.text}) {
+    return TextField(
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        labelText: labelText,
+        filled: true,
+        fillColor: Color(0xFFD9D9D9), // Light grey color
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVerifyButton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),  // Updated to match the correct class name
+        );
+      },
+      child: Text("Verify"),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blueAccent,
+        minimumSize: Size(double.infinity, 50), // Full width button
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20), // Rounded button
         ),
       ),
     );
   }
 }
-
-
-// import 'package:flutter/material.dart';
-// import 'package:qr_scan_slt/home_page.dart';
-//
-// class SignInScreen extends StatelessWidget {
-//   const SignInScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text(
-//               "Sign In",
-//               style: TextStyle(
-//                 fontSize: 42,
-//                 fontWeight: FontWeight.bold,
-//                 color: Colors.blue,
-//               ),
-//             ),
-//             SizedBox(height: 100),
-//             Text(
-//               "please Provide the Following Information",
-//               style: TextStyle(fontSize: 20),
-//             ),
-//             SizedBox(height: 20),
-//             TextField(
-//               decoration: InputDecoration(
-//                 labelText: "User Name",
-//                 filled: true,
-//                 fillColor: Colors.grey[200],
-//               ),
-//             ),
-//             SizedBox(height: 10),
-//             TextField(
-//               decoration: InputDecoration(
-//                 labelText: "Password",
-//                 filled: true,
-//                 fillColor: Colors.grey[200],
-//               ),
-//               obscureText: true,
-//             ),
-//             SizedBox(height: 10),
-//             TextField(
-//               decoration: InputDecoration(
-//                 labelText: "Phone No",
-//                 filled: true,
-//                 fillColor: Colors.grey[200],
-//               ),
-//               keyboardType: TextInputType.phone,
-//             ),
-//             SizedBox(height: 10),
-//             DropdownButtonFormField<String>(
-//               decoration: InputDecoration(
-//                 filled: true,
-//                 fillColor: Colors.grey[200],
-//               ),
-//               items: [
-//                 DropdownMenuItem(
-//                   child: Text("Select the Event"),
-//                   value: "Event",
-//                 ),
-//               ],
-//               onChanged: (value) {},
-//             ),
-//             SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.pushReplacement(
-//                   context,
-//                   MaterialPageRoute(builder: (context) => Homepage()),
-//                 );
-//               },
-//               child: Text("Verify"),
-//               style: ElevatedButton.styleFrom(
-//                 backgroundColor: Colors.blue,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
