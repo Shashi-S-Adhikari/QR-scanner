@@ -77,7 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
               child: TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
-                  labelText: "User Name",
+                  labelText: "Phone Number",
                   filled: true,
                   fillColor: Color(0xFFD9D9D9),
                   border: OutlineInputBorder(
