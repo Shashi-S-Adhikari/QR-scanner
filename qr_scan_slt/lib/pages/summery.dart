@@ -1,18 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scan_slt/dbHelper/mongodb.dart';
 
-class Summery extends StatelessWidget {
+class Summery extends StatefulWidget {
   const Summery({super.key});
+
+  @override
+  _SummeryState createState() => _SummeryState();
+}
+
+class _SummeryState extends State<Summery> {
+  Map<String, int> ticketCounts = {
+    'total': 0,
+    'normal': 0,
+    'vip': 0,
+    'vvip': 0,
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    fetchTicketCounts();
+  }
+
+  // Fetch ticket counts from MongoDB
+  Future<void> fetchTicketCounts() async {
+    try {
+      final counts = await MongoDatabase.getTicketCounts();
+      setState(() {
+        ticketCounts = counts ?? {
+          'total': 0,
+          'normal': 0,
+          'vip': 0,
+          'vvip': 0,
+        };
+      });
+    } catch (e) {
+      debugPrint('Error fetching ticket counts: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2D2D2D), // Background color for the page
+      backgroundColor: const Color(0xFF2D2D2D), // Background color for the page
       body: Column(
         children: [
           // Title for Summery
           Padding(
             padding: const EdgeInsets.only(top: 32.0, bottom: 16.0),
-            child: Text(
+            child: const Text(
               'Summery',
               style: TextStyle(
                 fontSize: 28,
@@ -32,15 +68,15 @@ class Summery extends StatelessWidget {
               ),
             ),
           ),
-          // Dummy summery content (like in the image)
+          // Ticket counts fetched from MongoDB
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               children: [
-                buildTicketCard('Total count', '1000'),
-                buildTicketCard('Normal Tickets', '500'),
-                buildTicketCard('VIP Tickets', '250'),
-                buildTicketCard('VVIP Tickets', '250'),
+                buildTicketCard('Total count', '${ticketCounts['total']}'),
+                buildTicketCard('Normal Tickets', '${ticketCounts['normal']}'),
+                buildTicketCard('VIP Tickets', '${ticketCounts['vip']}'),
+                buildTicketCard('VVIP Tickets', '${ticketCounts['vvip']}'),
               ],
             ),
           ),

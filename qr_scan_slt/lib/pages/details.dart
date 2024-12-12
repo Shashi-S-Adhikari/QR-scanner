@@ -15,81 +15,92 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2D2D2D), // Background color for the page
+      backgroundColor: Colors.white.withOpacity(0.95), // Light background color
+      appBar: AppBar(
+        title: const Text('History'),
+        backgroundColor: Colors.blueAccent,
+      ),
       body: Column(
         children: [
-          // Title for History
+          // Page subtitle
           Padding(
-            padding: const EdgeInsets.only(top: 47.0, bottom: 16.0),
-            child: Text(
-              'History',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          // Subtitle for Void Ticket History
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
             child: Text(
               'Void Ticket History',
               style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey[400],
-              ),
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),p
             ),
           ),
-          // Dummy history list as per the image
+          // History List
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: 13, // Number of dummy history items (set to 5)
+              itemCount: 18, // Example item count
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Container(
+                    padding: const EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
-                      color: Color(0xFF3A3A3A), // Dark grey background for the list item
+                      color: Colors.blueAccent.withOpacity(0.1), // Soft blue background
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10,
+                          color: Colors.blueAccent.withOpacity(0.2),
+                          blurRadius: 8,
                           spreadRadius: 2,
-                          offset: Offset(0, 5),
+                          offset: Offset(0, 4),
                         ),
                       ],
                     ),
-                    child: ListTile(
-                      leading: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.blueAccent,
-                          borderRadius: BorderRadius.circular(12),
+                    child: Row(
+                      children: [
+                        // Icon container with gradient background
+                        Container(
+                          padding: const EdgeInsets.all(12.0),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.blueAccent, Colors.lightBlueAccent],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.qr_code_scanner,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                         ),
-                        child: Icon(
-                          Icons.qr_code_scanner,
-                          color: Colors.white,
-                          size: 32,
+                        const SizedBox(width: 16),
+                        // Event information
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Deep Jungle Reggae Stage 2024',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'Date: 16 Oct 2024, 9:30 PM',
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(0.7),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      title: Text(
-                        'Deep Jungle Reggae Stage 2024',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Data\n16 Oct 2024, 9:30 pm',
-                        style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 14,
-                        ),
-                      ),
+                      ],
                     ),
                   ),
                 );

@@ -51,30 +51,32 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Sign In",
-              style: TextStyle(
-                fontSize: 42,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Text(
+                "Sign In",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 42,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
               ),
-            ),
-            SizedBox(height: 100),
-            Text(
-              "Please Provide the Following Information",
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 50),
-            // User Name field
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: TextField(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Text(
+                "Please Provide the Following Information",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              // User Name field
+              TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
                   labelText: "Phone Number",
@@ -86,13 +88,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            // Password field
-            SizedBox(
-              height: 80,
-              width: double.infinity,
-              child: TextField(
+              SizedBox(height: 16),
+              // Password field
+              TextField(
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: "Password",
@@ -105,27 +103,29 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 obscureText: true,
               ),
-            ),
-            SizedBox(height: 10),
-            if (_errorMessage.isNotEmpty)
-              Text(
-                _errorMessage,
-                style: TextStyle(color: Colors.red),
-              ),
-            SizedBox(height: 20),
-            // Elevated button for Verify action
-            ElevatedButton(
-              onPressed: _signIn,
-              child: Text("Verify"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                minimumSize: Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+              SizedBox(height: 16),
+              if (_errorMessage.isNotEmpty)
+                Text(
+                  _errorMessage,
+                  style: TextStyle(color: Colors.red),
+                  textAlign: TextAlign.center,
+                ),
+              SizedBox(height: 24),
+              // Elevated button for Verify action
+              ElevatedButton(
+                onPressed: _signIn,
+                child: Text("Verify"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            ],
+          ),
         ),
       ),
     );
